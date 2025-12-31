@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:radial-gradient(circle,#020024,#090979,#000);
+  height:100vh;
+  overflow:hidden;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.step{
+  display:none;
+  animation:fade 1.5s ease;
+}
+
+.active{display:block;}
+
+@keyframes fade{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
+}
+
+.box{
+  padding:30px;
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  box-shadow:0 0 30px rgba(255,255,255,0.3);
+}
+
+button{
+  margin:15px;
+  padding:12px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fa3);
+  color:white;
+  box-shadow:0 0 15px #ff4d6d;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+/* 🌹 ROSES */
+.rose{
+  position:absolute;
+  bottom:-200px;
+  width:18px;
+  height:280px;
+  background:linear-gradient(to top,#0a5,#0f8);
+  border-radius:10px;
+  animation:rise 14s linear infinite;
+}
+
+.rose::before{
+  content:"🌹";
+  position:absolute;
+  top:-60px;
+  left:-18px;
+  font-size:3em;
+  filter: drop-shadow(0 0 15px red);
+}
+
+@keyframes rise{
+  0%{transform:translateY(0); opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-130vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌹 Roses -->
+<div class="rose" style="left:20%; animation-delay:0s;"></div>
+<div class="rose" style="left:50%; animation-delay:5s;"></div>
+<div class="rose" style="left:80%; animation-delay:9s;"></div>
+
+<!-- STEP 1 -->
+<div class="step active" id="s1">
+  <div class="box">
+    <h1>📦 Touch This Box</h1>
+    <p>Something special inside…</p>
+    <button onclick="next(2)">Open</button>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step" id="s2">
+  <div class="box">
+    <h1>✨ Happy New Year 2026 ✨</h1>
+    <p>May this year bring us closer 💖</p>
+    <button onclick="next(3)">Next</button>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step" id="s3">
+  <div class="box">
+    <h1>💍 Will You Marry Me?</h1>
+    <button onclick="next(4)">Yes ❤️</button>
+    <button onclick="alert('😌 Take your time…')">No</button>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step" id="s4">
+  <div class="box">
+    <h1>❤️ I Love You</h1>
+    <p>
+      From this moment,<br>
+      you are my today,<br>
+      my tomorrow,<br>
+      my forever.
+    </p>
+    <h3>— Yours, Always 💞</h3>
+  </div>
+</div>
+
+<script>
+function next(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+}
+</script>
+
+</body>
+</html>
