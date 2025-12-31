@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANISHA ❤️ PRANAV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ================= GOOGLE FONTS ================= -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===================================================
+   GLOBAL RESET
+=================================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#0b0014,#12001f,#000);
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+}
+
+/* ===================================================
+   CONTAINER
+=================================================== */
+#container{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ===================================================
+   STEPS
+=================================================== */
+.step{
+  position:absolute;
+  width:100%;
+  text-align:center;
+  padding:20px;
+  opacity:0;
+  transform:scale(0.85) translateY(30px);
+  transition:all 1.2s ease;
+  pointer-events:none;
+}
+
+.step.active{
+  opacity:1;
+  transform:scale(1) translateY(0);
+  pointer-events:auto;
+}
+
+/* ===================================================
+   HEADINGS
+=================================================== */
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3.2em;
+  margin-bottom:20px;
+  text-shadow:
+    0 0 15px #ff4d6d,
+    0 0 30px #ff7b9c,
+    0 0 60px rgba(255,77,109,0.6);
+}
+
+h2{
+  font-weight:300;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+/* ===================================================
+   BUTTONS
+=================================================== */
+.btn{
+  padding:14px 36px;
+  margin:15px;
+  border:none;
+  border-radius:40px;
+  font-size:1.1em;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4d6d,#ff9a9e);
+  color:white;
+  box-shadow:
+    0 0 15px rgba(255,77,109,0.8),
+    0 0 40px rgba(255,154,158,0.4);
+  transition:all 0.4s ease;
+}
+
+.btn:hover{
+  transform:scale(1.12);
+  box-shadow:
+    0 0 30px #ff4d6d,
+    0 0 70px rgba(255,154,158,0.9);
+}
+
+/* ===================================================
+   TEXT
+=================================================== */
+p{
+  font-size:1.05em;
+  line-height:1.7em;
+  max-width:650px;
+  margin:0 auto 20px;
+  color:#ffdce2;
+}
+
+/* ===================================================
+   FLOATING OBJECTS
+=================================================== */
+.float{
+  position:absolute;
+  bottom:-50px;
+  font-size:26px;
+  animation:floatUp linear infinite;
+  opacity:0.9;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(100vh) rotate(0deg);
+    opacity:0;
+  }
+  10%{opacity:1;}
+  to{
+    transform:translateY(-10vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* ===================================================
+   PARTICLE BACKGROUND
+=================================================== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div id="container">
+
+<!-- ================= STEP 1 ================= -->
+<div class="step active" id="step1">
+  <h1>💌 Touch to Open</h1>
+  <p>Someone has a message for you…</p>
+  <button class="btn" onclick="goStep(2)">Open</button>
+</div>
+
+<!-- ================= STEP 2 ================= -->
+<div class="step" id="step2">
+  <h1>Happy New Year 2026 ✨</h1>
+  <h2>ANISHA ❤️ PRANAV</h2>
+  <p>
+    A new year…  
+    A new chapter…  
+    And one person I want in every page of my life.
+  </p>
+  <button class="btn" onclick="goStep(3)">Continue</button>
+</div>
+
+<!-- ================= STEP 3 ================= -->
+<div class="step" id="step3">
+  <h1>Will You Marry Me? 💍</h1>
+  <p>
+    Not today… not tomorrow…  
+    But forever.  
+    Through every smile, every tear, every silence.
+  </p>
+  <button class="btn" onclick="goStep(4)">Yes ❤️</button>
+  <button class="btn" onclick="playfulNo()">No 🙈</button>
+</div>
+
+<!-- ================= STEP 4 ================= -->
+<div class="step" id="step4">
+  <h1>I Love You ❤️</h1>
+  <p>
+    You are my calm in chaos,  
+    my light in darkness,  
+    my forever in this universe.
+  </p>
+  <p>— Pranav</p>
+</div>
+
+</div>
+
+<script>
+/* ===================================================
+   STEP CONTROLLER
+=================================================== */
+function goStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+}
+
+/* ===================================================
+   NO BUTTON FUN
+=================================================== */
+function playfulNo(){
+  alert("Hehe 😄 I’ll wait… because love waits ❤️");
+}
+
+/* ===================================================
+   FLOATING ROSES & HEARTS
+=================================================== */
+const symbols=["🌹","❤️","💖","💘","🌸"];
+
+setInterval(()=>{
+  const el=document.createElement("div");
+  el.className="float";
+  el.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),12000);
+},450);
+
+/* ===================================================
+   PARTICLE BACKGROUND
+=================================================== */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+let particles=[];
+for(let i=0;i<120;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,180,200,0.6)";
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
